@@ -1,0 +1,409 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Open+Sans:wght@300;400;500;600;700&display=swap');
+@import "tailwindcss";
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --font-size: 14px;
+  
+  /* New Color Palette - Coral to Purple Gradient */
+  --coral-500: #F18585;
+  --coral-400: #F49C9C;
+  --coral-300: #F6AEAE;
+  --coral-200: #F8CACF;
+  --lavender-100: #EED5FB;
+  --lavender-200: #E4BEF8;
+  --purple-300: #D5A8F2;
+  --purple-400: #CB90F1;
+  --purple-500: #C174F2;
+  
+  /* Updated Primary Colors */
+  --primary: #C174F2;
+  --secondary: #D5A8F2;
+  --accent: #F18585;
+  
+  /* Neutral Colors */
+  --neutral-900: #0B1020;
+  --neutral-800: #1A1F35;
+  --neutral-700: #2A2F45;
+  --neutral-600: #3A3F55;
+  --neutral-500: #4A4F65;
+  --neutral-400: #6B7280;
+  --neutral-300: #9CA3AF;
+  --neutral-200: #D1D5DB;
+  --neutral-100: #E5E7EB;
+  --neutral-50: #F5F7FB;
+  
+  /* Système de couleurs Shadcn */
+  --background: #ffffff;
+  --foreground: var(--neutral-900);
+  --card: #ffffff;
+  --card-foreground: var(--neutral-900);
+  --popover: #ffffff;
+  --popover-foreground: var(--neutral-900);
+  --primary-bg: var(--primary);
+  --primary-foreground: #ffffff;
+  --secondary-bg: var(--secondary);
+  --secondary-foreground: #ffffff;
+  --muted: var(--neutral-50);
+  --muted-foreground: var(--neutral-600);
+  --accent-bg: var(--accent);
+  --accent-foreground: var(--neutral-900);
+  --destructive: #DC2626;
+  --destructive-foreground: #ffffff;
+  --border: var(--neutral-200);
+  --input: var(--neutral-100);
+  --input-background: var(--neutral-50);
+  --switch-background: var(--neutral-300);
+  --font-weight-medium: 500;
+  --font-weight-normal: 400;
+  --font-weight-bold: 700;
+  --ring: var(--primary);
+  --chart-1: var(--coral-500);
+  --chart-2: var(--purple-300);
+  --chart-3: var(--coral-400);
+  --chart-4: var(--purple-400);
+  --chart-5: var(--lavender-200);
+  --radius: 12px;
+  --sidebar: var(--neutral-50);
+  --sidebar-foreground: var(--neutral-900);
+  --sidebar-primary: var(--primary);
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: var(--neutral-100);
+  --sidebar-accent-foreground: var(--neutral-900);
+  --sidebar-border: var(--neutral-200);
+  --sidebar-ring: var(--primary);
+}
+
+.dark {
+  --background: var(--neutral-900);
+  --foreground: var(--neutral-50);
+  --card: var(--neutral-800);
+  --card-foreground: var(--neutral-50);
+  --popover: var(--neutral-800);
+  --popover-foreground: var(--neutral-50);
+  --primary-bg: var(--primary);
+  --primary-foreground: #ffffff;
+  --secondary-bg: var(--secondary);
+  --secondary-foreground: #ffffff;
+  --muted: var(--neutral-800);
+  --muted-foreground: var(--neutral-400);
+  --accent-bg: var(--accent);
+  --accent-foreground: var(--neutral-900);
+  --destructive: #EF4444;
+  --destructive-foreground: #ffffff;
+  --border: var(--neutral-700);
+  --input: var(--neutral-700);
+  --ring: var(--primary);
+  --sidebar: var(--neutral-800);
+  --sidebar-foreground: var(--neutral-50);
+  --sidebar-primary: var(--primary);
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: var(--neutral-700);
+  --sidebar-accent-foreground: var(--neutral-50);
+  --sidebar-border: var(--neutral-700);
+  --sidebar-ring: var(--primary);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary-bg);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary-bg);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent-bg);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-input-background: var(--input-background);
+  --color-switch-background: var(--switch-background);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Open Sans', sans-serif;
+  }
+}
+
+/**
+ * Typography - Montserrat for headings, Open Sans for body
+ */
+@layer base {
+  :where(:not(:has([class*=" text-"]), :not(:has([class^="text-"])))) {
+    h1 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 2.5rem;
+      font-weight: var(--font-weight-bold);
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+    }
+
+    h2 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 2rem;
+      font-weight: var(--font-weight-bold);
+      line-height: 1.3;
+      letter-spacing: -0.01em;
+    }
+
+    h3 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.5rem;
+      font-weight: var(--font-weight-bold);
+      line-height: 1.4;
+    }
+
+    h4 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.25rem;
+      font-weight: var(--font-weight-medium);
+      line-height: 1.5;
+    }
+
+    h5 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.125rem;
+      font-weight: var(--font-weight-medium);
+      line-height: 1.5;
+    }
+
+    h6 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1rem;
+      font-weight: var(--font-weight-medium);
+      line-height: 1.5;
+    }
+
+    p {
+      font-family: 'Open Sans', sans-serif;
+      font-size: 1rem;
+      font-weight: var(--font-weight-normal);
+      line-height: 1.6;
+    }
+
+    label {
+      font-family: 'Open Sans', sans-serif;
+      font-size: 0.875rem;
+      font-weight: var(--font-weight-medium);
+      line-height: 1.5;
+    }
+
+    button {
+      font-family: 'Open Sans', sans-serif;
+      font-size: 0.875rem;
+      font-weight: var(--font-weight-medium);
+      line-height: 1.5;
+    }
+
+    input {
+      font-family: 'Open Sans', sans-serif;
+      font-size: 0.875rem;
+      font-weight: var(--font-weight-normal);
+      line-height: 1.5;
+    }
+  }
+}
+
+html {
+  font-size: var(--font-size);
+  scroll-behavior: smooth;
+}
+
+/* Utilities for sectors - Updated with new color palette */
+.sector-climate { @apply bg-green-100 text-green-800 dark:bg-green-900/20 dark:text-green-300; }
+.sector-health { background-color: var(--coral-200); color: var(--coral-500); }
+.sector-education { background-color: var(--purple-300); color: var(--neutral-800); }
+.sector-fintech { background-color: var(--lavender-100); color: var(--purple-500); }
+.sector-ai { background-color: var(--purple-400); color: white; }
+.sector-mobility { background-color: var(--coral-300); color: var(--neutral-800); }
+
+/* Utilities for maturity - Updated with new color palette */
+.maturity-idea { background-color: var(--neutral-100); color: var(--neutral-800); }
+.maturity-seed { background-color: var(--lavender-200); color: var(--purple-500); }
+.maturity-series { background-color: var(--coral-400); color: white; }
+
+/* Font utilities */
+.font-heading {
+  font-family: 'Montserrat', sans-serif;
+}
+
+.font-body {
+  font-family: 'Open Sans', sans-serif;
+}
+
+/* Line clamp utilities */
+.line-clamp-1 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+}
+
+.line-clamp-2 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.line-clamp-3 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+}
+
+/* WCAG AA Accessibility utilities */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.sr-only.focus:focus,
+.sr-only:focus-visible {
+  position: static;
+  width: auto;
+  height: auto;
+  padding: inherit;
+  margin: inherit;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+}
+
+/* Focus styles for better accessibility */
+.focus-outline {
+  @apply focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:ring-offset-background;
+}
+
+/* Ensure all interactive elements have adequate focus styles */
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+[role="button"]:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  :root {
+    --background: #ffffff;
+    --foreground: #000000;
+    --border: #000000;
+    --ring: #0000ff;
+    --primary: #0000ff;
+    --primary-foreground: #ffffff;
+  }
+  
+  .dark {
+    --background: #000000;
+    --foreground: #ffffff;
+    --border: #ffffff;
+    --ring: #ffffff;
+    --primary: #ffffff;
+    --primary-foreground: #000000;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Ensure adequate spacing for touch targets */
+@media (pointer: coarse) {
+  button,
+  [role="button"],
+  input,
+  select,
+  textarea,
+  a {
+    min-height: 44px;
+    min-width: 44px;
+  }
+}
+
+/* Keyboard navigation focus styles */
+body:not(.keyboard-navigation) *:focus {
+  outline: none;
+}
+
+body.keyboard-navigation *:focus {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}
+
+/* Enhanced focus styles for interactive elements */
+.keyboard-navigation button:focus,
+.keyboard-navigation a:focus,
+.keyboard-navigation input:focus,
+.keyboard-navigation select:focus,
+.keyboard-navigation textarea:focus,
+.keyboard-navigation [role="button"]:focus,
+.keyboard-navigation [tabindex]:focus {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 2px var(--background), 0 0 0 4px var(--ring);
+}
+
+/* Focus within for cards and complex components */
+.keyboard-navigation .focus-within\:ring-2:focus-within {
+  ring: 2px solid var(--ring);
+  ring-offset: 2px;
+}
+
+/* Ensure text meets minimum size requirements */
+@media screen and (max-width: 1200px) {
+  body {
+    font-size: max(16px, 1rem);
+  }
+}
