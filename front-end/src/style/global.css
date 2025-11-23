@@ -1,68 +1,85 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Open+Sans:wght@300;400;500;600;700&display=swap');
+/* Pizzeria typography: Playfair Display for headings, Montserrat for body */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@400;500;600;700;800&display=swap');
 @import "tailwindcss";
 @custom-variant dark (&:is(.dark *));
 
 :root {
   --font-size: 14px;
   
-  /* New Color Palette - Coral to Purple Gradient */
-  --coral-500: #F18585;
-  --coral-400: #F49C9C;
-  --coral-300: #F6AEAE;
-  --coral-200: #F8CACF;
-  --lavender-100: #EED5FB;
-  --lavender-200: #E4BEF8;
-  --purple-300: #D5A8F2;
-  --purple-400: #CB90F1;
-  --purple-500: #C174F2;
+  /* Red, Black & White Color Palette */
+  --red-900: #7f0000;
+  --red-800: #991010;
+  --red-700: #b91c1c;
+  --red-600: #dc2626;
+  --red-500: #ef4444;
+  --red-400: #f87171;
+  --red-300: #fca5a5;
+  --red-200: #fecaca;
+  --red-100: #fee2e2;
   
-  /* Updated Primary Colors */
-  --primary: #C174F2;
-  --secondary: #D5A8F2;
-  --accent: #F18585;
+  /* Black & Gray scale */
+  --black: #000000;
+  --gray-900: #1a1a1a;
+  --gray-800: #262626;
+  --gray-700: #404040;
+  --gray-600: #525252;
+  --gray-500: #737373;
+  --gray-400: #a3a3a3;
+  --gray-300: #d4d4d4;
+  --gray-200: #e5e5e5;
+  --gray-100: #f5f5f5;
+  --white: #ffffff;
   
-  /* Neutral Colors */
-  --neutral-900: #0B1020;
-  --neutral-800: #1A1F35;
-  --neutral-700: #2A2F45;
-  --neutral-600: #3A3F55;
-  --neutral-500: #4A4F65;
-  --neutral-400: #6B7280;
-  --neutral-300: #9CA3AF;
-  --neutral-200: #D1D5DB;
-  --neutral-100: #E5E7EB;
-  --neutral-50: #F5F7FB;
+  /* Pizzeria brand colors */
+  --brand-red: #dc2626; /* vibrant red */
+  --brand-dark: #1a1a1a; /* deep black */
+  --brand-light: #ffffff; /* pure white */
+  --primary: var(--brand-red);
+  --secondary: var(--gray-800);
+  --accent: var(--brand-dark);
+  
+  /* Neutral Colors (alias for gray scale) */
+  --neutral-900: var(--gray-900);
+  --neutral-800: var(--gray-800);
+  --neutral-700: var(--gray-700);
+  --neutral-600: var(--gray-600);
+  --neutral-500: var(--gray-500);
+  --neutral-400: var(--gray-400);
+  --neutral-300: var(--gray-300);
+  --neutral-200: var(--gray-200);
+  --neutral-100: var(--gray-100);
+  --neutral-50: var(--gray-100);
   
   /* Système de couleurs Shadcn */
-  --background: #ffffff;
-  --foreground: var(--neutral-900);
-  --card: #ffffff;
-  --card-foreground: var(--neutral-900);
-  --popover: #ffffff;
-  --popover-foreground: var(--neutral-900);
+  --background: #FFF8F0;
+  --foreground: var(--brand-dark);
+  --card: var(--white);
+  --card-foreground: var(--black);
+  --popover: var(--white);
+  --popover-foreground: var(--black);
   --primary-bg: var(--primary);
-  --primary-foreground: #ffffff;
-  --secondary-bg: var(--secondary);
-  --secondary-foreground: #ffffff;
-  --muted: var(--neutral-50);
-  --muted-foreground: var(--neutral-600);
-  --accent-bg: var(--accent);
-  --accent-foreground: var(--neutral-900);
-  --destructive: #DC2626;
-  --destructive-foreground: #ffffff;
-  --border: var(--neutral-200);
-  --input: var(--neutral-100);
-  --input-background: var(--neutral-50);
-  --switch-background: var(--neutral-300);
+  --primary-foreground: var(--white);
+  --secondary-bg: var(--gray-800);
+  --secondary-foreground: var(--white);
+  --muted: var(--gray-100);
+  --muted-foreground: var(--gray-600);
+  --accent-bg: var(--brand-red);
+  --accent-foreground: var(--white);
+  --destructive: var(--red-600);
+  --destructive-foreground: var(--white);
+  --border: var(--gray-300);
+  --input: var(--gray-200);
+  --input-background: var(--white);
+  --switch-background: var(--gray-300);
   --font-weight-medium: 500;
   --font-weight-normal: 400;
   --font-weight-bold: 700;
   --ring: var(--primary);
-  --chart-1: var(--coral-500);
-  --chart-2: var(--purple-300);
-  --chart-3: var(--coral-400);
-  --chart-4: var(--purple-400);
-  --chart-5: var(--lavender-200);
+  --chart-1: var(--red-500);
+  --chart-2: var(--gray-700);
+  --chart-3: var(--red-400);
+  --chart-4: var(--gray-600);
+  --chart-5: var(--red-300);
   --radius: 12px;
   --sidebar: var(--neutral-50);
   --sidebar-foreground: var(--neutral-900);
@@ -75,33 +92,33 @@
 }
 
 .dark {
-  --background: var(--neutral-900);
-  --foreground: var(--neutral-50);
-  --card: var(--neutral-800);
-  --card-foreground: var(--neutral-50);
-  --popover: var(--neutral-800);
-  --popover-foreground: var(--neutral-50);
-  --primary-bg: var(--primary);
-  --primary-foreground: #ffffff;
-  --secondary-bg: var(--secondary);
-  --secondary-foreground: #ffffff;
-  --muted: var(--neutral-800);
-  --muted-foreground: var(--neutral-400);
-  --accent-bg: var(--accent);
-  --accent-foreground: var(--neutral-900);
-  --destructive: #EF4444;
-  --destructive-foreground: #ffffff;
-  --border: var(--neutral-700);
-  --input: var(--neutral-700);
-  --ring: var(--primary);
-  --sidebar: var(--neutral-800);
-  --sidebar-foreground: var(--neutral-50);
-  --sidebar-primary: var(--primary);
-  --sidebar-primary-foreground: #ffffff;
-  --sidebar-accent: var(--neutral-700);
-  --sidebar-accent-foreground: var(--neutral-50);
-  --sidebar-border: var(--neutral-700);
-  --sidebar-ring: var(--primary);
+  --background: var(--black);
+  --foreground: var(--white);
+  --card: var(--gray-900);
+  --card-foreground: var(--white);
+  --popover: var(--gray-900);
+  --popover-foreground: var(--white);
+  --primary-bg: var(--brand-red);
+  --primary-foreground: var(--white);
+  --secondary-bg: var(--gray-800);
+  --secondary-foreground: var(--white);
+  --muted: var(--gray-800);
+  --muted-foreground: var(--gray-400);
+  --accent-bg: var(--brand-red);
+  --accent-foreground: var(--white);
+  --destructive: var(--red-500);
+  --destructive-foreground: var(--white);
+  --border: var(--gray-700);
+  --input: var(--gray-800);
+  --ring: var(--brand-red);
+  --sidebar: var(--gray-900);
+  --sidebar-foreground: var(--white);
+  --sidebar-primary: var(--brand-red);
+  --sidebar-primary-foreground: var(--white);
+  --sidebar-accent: var(--gray-800);
+  --sidebar-accent-foreground: var(--white);
+  --sidebar-border: var(--gray-700);
+  --sidebar-ring: var(--brand-red);
 }
 
 @theme inline {
@@ -152,7 +169,9 @@
 
   body {
     @apply bg-background text-foreground;
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Montserrat', sans-serif;
+    background-color: #FFF8F0;
+    color: var(--foreground);
   }
 }
 
@@ -162,7 +181,7 @@
 @layer base {
   :where(:not(:has([class*=" text-"]), :not(:has([class^="text-"])))) {
     h1 {
-      font-family: 'Montserrat', sans-serif;
+      font-family: 'Playfair Display', serif;
       font-size: 2.5rem;
       font-weight: var(--font-weight-bold);
       line-height: 1.2;
@@ -170,7 +189,7 @@
     }
 
     h2 {
-      font-family: 'Montserrat', sans-serif;
+      font-family: 'Playfair Display', serif;
       font-size: 2rem;
       font-weight: var(--font-weight-bold);
       line-height: 1.3;
@@ -206,7 +225,7 @@
     }
 
     p {
-      font-family: 'Open Sans', sans-serif;
+      font-family: 'Montserrat', sans-serif;
       font-size: 1rem;
       font-weight: var(--font-weight-normal);
       line-height: 1.6;
@@ -220,7 +239,7 @@
     }
 
     button {
-      font-family: 'Open Sans', sans-serif;
+      font-family: 'Montserrat', sans-serif;
       font-size: 0.875rem;
       font-weight: var(--font-weight-medium);
       line-height: 1.5;
@@ -240,18 +259,18 @@ html {
   scroll-behavior: smooth;
 }
 
-/* Utilities for sectors - Updated with new color palette */
-.sector-climate { @apply bg-green-100 text-green-800 dark:bg-green-900/20 dark:text-green-300; }
-.sector-health { background-color: var(--coral-200); color: var(--coral-500); }
-.sector-education { background-color: var(--purple-300); color: var(--neutral-800); }
-.sector-fintech { background-color: var(--lavender-100); color: var(--purple-500); }
-.sector-ai { background-color: var(--purple-400); color: white; }
-.sector-mobility { background-color: var(--coral-300); color: var(--neutral-800); }
+/* Utilities for sectors - Red, Black & White palette */
+.sector-climate { background-color: var(--gray-100); color: var(--gray-800); }
+.sector-health { background-color: var(--red-100); color: var(--red-700); }
+.sector-education { background-color: var(--gray-200); color: var(--black); }
+.sector-fintech { background-color: var(--red-200); color: var(--red-800); }
+.sector-ai { background-color: var(--gray-800); color: var(--white); }
+.sector-mobility { background-color: var(--red-300); color: var(--red-900); }
 
-/* Utilities for maturity - Updated with new color palette */
-.maturity-idea { background-color: var(--neutral-100); color: var(--neutral-800); }
-.maturity-seed { background-color: var(--lavender-200); color: var(--purple-500); }
-.maturity-series { background-color: var(--coral-400); color: white; }
+/* Utilities for maturity - Red, Black & White palette */
+.maturity-idea { background-color: var(--gray-100); color: var(--gray-800); }
+.maturity-seed { background-color: var(--red-100); color: var(--red-700); }
+.maturity-series { background-color: var(--red-500); color: var(--white); }
 
 /* Font utilities */
 .font-heading {
@@ -406,4 +425,91 @@ body.keyboard-navigation *:focus {
   body {
     font-size: max(16px, 1rem);
   }
+}
+
+/* Pizzeria specific components - Red, Black & White theme */
+.menu-card {
+  background: var(--white);
+  border: 2px solid var(--gray-200);
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  transition: all 0.2s ease;
+}
+.menu-card:hover {
+  border-color: var(--brand-red);
+  box-shadow: 0 6px 18px rgba(220,38,38,0.15);
+}
+.menu-card-content { padding: 1.25rem; }
+.menu-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.125rem;
+  color: var(--black);
+  font-weight: 700;
+}
+.menu-desc {
+  color: var(--gray-600);
+  margin-top: 0.25rem;
+}
+.price-badge {
+  background: var(--brand-red);
+  color: var(--white);
+  padding: 0.25rem 0.6rem;
+  border-radius: 9999px;
+  font-weight: 600;
+}
+.btn-order {
+  background: var(--brand-red);
+  color: var(--white);
+  border-radius: 8px;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+  border: 2px solid var(--brand-red);
+  transition: all 0.2s ease;
+}
+.btn-order:hover { 
+  background: var(--white);
+  color: var(--brand-red);
+  border-color: var(--brand-red);
+}
+
+/* Site banner (restaurant header image) - Red, Black & White theme */
+.site-banner {
+  width: 100%;
+  background-color: #FFF8F0;
+  border-bottom: 3px solid var(--brand-red);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem 0;
+}
+.site-banner img {
+  max-width: 1100px; /* keeps banner readable on large screens */
+  width: 92%;
+  height: auto;
+  object-fit: contain;
+  display: block;
+}
+
+/* Header adjustments for pizzeria feel */
+.container > header, header .font-bold { font-family: 'Playfair Display', serif; }
+
+/* Navigation links - better hover contrast */
+header nav a,
+header nav [role="button"] {
+  position: relative;
+}
+header nav a:hover,
+header nav [role="button"]:hover {
+  color: var(--brand-red) !important;
+  background-color: rgba(220, 38, 38, 0.05);
+}
+header nav a[aria-current="page"],
+header nav [role="button"][aria-current="page"] {
+  color: var(--brand-red);
+  font-weight: 600;
+}
+
+/* If banner exists, reduce top spacing for header to avoid large gap */
+.with-banner header.sticky {
+  margin-top: -0.5rem;
 }
