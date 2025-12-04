@@ -12,6 +12,8 @@ import { NewsModule } from './news/news.module';
 import { EventModule } from './event/event.module';
 import { HealthController } from './health/health.controller';
 import { AuthModule } from './auth/auth.module';
+import { PizzaModule } from './pizza/pizza.module';
+import { IngredientModule } from './ingredient/ingredient.module';
 
 
 @Module({
@@ -40,6 +42,8 @@ import { AuthModule } from './auth/auth.module';
     NewsModule,
     EventModule,
     AuthModule,
+    PizzaModule,
+    IngredientModule,
   ],
   controllers: [HealthController],
   providers: [],

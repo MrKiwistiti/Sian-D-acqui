@@ -21,7 +21,8 @@
     "typeorm": "typeorm-ts-node-commonjs",
     "migration:generate": "npm run typeorm -- migration:generate src/migrations/InitSchema -d src/typeorm-data-source.ts",
     "migration:run": "npm run typeorm -- migration:run -d src/typeorm-data-source.ts",
-    "migration:revert": "npm run typeorm -- migration:revert -d src/typeorm-data-source.ts"
+    "migration:revert": "npm run typeorm -- migration:revert -d src/typeorm-data-source.ts",
+    "seed:pizzeria": "ts-node seed-pizzeria.ts"
   },
   "dependencies": {
     "@nestjs/common": "^11.0.1",
