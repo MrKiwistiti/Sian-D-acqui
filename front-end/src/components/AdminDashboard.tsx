@@ -81,7 +81,7 @@ export function AdminDashboard({ onNavigate }: AdminDashboardProps) {
     title: '',
     content: '',
     category: 'Innovation',
-    author: 'JEB Admin'
+    author: 'Sian D\'Acqui Admin'
   });
   
   const { projects } = useProjectsData();
@@ -145,7 +145,7 @@ export function AdminDashboard({ onNavigate }: AdminDashboardProps) {
         title: '',
         content: '',
         category: 'Innovation',
-        author: 'JEB Admin'
+        author: 'Sian D\'Acqui Admin'
       });
     } catch (error) {
       console.error('Error creating news:', error);

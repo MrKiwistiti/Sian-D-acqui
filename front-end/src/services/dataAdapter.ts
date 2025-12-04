@@ -20,7 +20,7 @@ export class DataAdapter {
       email: startup.email || undefined,
       founded: extractYearFromDate(startup.createdAt)?.toString() || "2024",
       metrics: {
-        mrr: "N/A", // Ces données ne sont pas dans l'API JEB
+        mrr: "N/A", // Ces données ne sont pas dans l'API Sian D'Acqui
         users: "N/A"
       }
     };
@@ -33,16 +33,16 @@ export class DataAdapter {
       excerpt: news.content ? news.content.substring(0, 150) + "..." : "Résumé non disponible",
       content: news.content || "Contenu non disponible",
       description: "Description non disponible",
-      author: "JEB Incubator",
+      author: "Sian D'Acqui",
       publishedAt: news.created_at || new Date().toISOString(),
       tags: news.category ? [news.category] : [],
       image: news.image_url || undefined,
-      source: "JEB Incubator"
+      source: "Sian D'Acqui"
     };
   }
 
   static eventToFrontendEvent(event: any): FrontendEvent {
-    // Adapter la structure réelle de l'API JEB
+    // Adapter la structure réelle de l'API Sian D'Acqui
     return {
       id: event.id.toString(),
       title: event.name || event.title,

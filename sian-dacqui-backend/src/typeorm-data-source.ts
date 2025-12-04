@@ -11,7 +11,7 @@ export default new DataSource({
   port: Number(process.env.DB_PORT || 5432),
   username: process.env.DB_USER || 'postgres',
   password: process.env.DB_PASS || 'postgres',
-  database: process.env.DB_NAME || 'jeb_incubator_db',
+  database: process.env.DB_NAME || 'sian_dacqui_db',
   synchronize: false,
   logging: true,
   entities: [path.join(__dirname, '**/*.entity.{ts,js}')],

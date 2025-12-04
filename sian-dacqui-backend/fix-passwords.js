@@ -7,7 +7,7 @@ const dataSource = new DataSource({
   port: 5432,
   username: 'postgres',
   password: 'J€b_1ncu!at0r4532',
-  database: 'jeb_incubator_db',
+  database: 'sian_dacqui_db',
 });
 
 async function fixPasswords() {

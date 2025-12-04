@@ -1,6 +1,6 @@
-# JEB Incubator - Full Stack Application
+# Sian D'Acqui - Full Stack Application
 
-Application complète avec frontend React et backend NestJS pour afficher les données de l'incubateur JEB.
+Application complète avec frontend React et backend NestJS pour afficher les données de Sian D'Acqui.
 
 ## 🏗️ Architecture
 
@@ -14,7 +14,7 @@ Application complète avec frontend React et backend NestJS pour afficher les do
 - **Framework**: NestJS 11.0.1 avec TypeORM
 - **Base de données**: PostgreSQL 16 (Docker)
 - **Port**: http://localhost:3000
-- **API externe**: Synchronisation avec JEB API
+- **API externe**: Synchronisation avec Sian D'Acqui API
 
 ## 📦 Installation
 
@@ -38,7 +38,7 @@ nvm alias default 20.19.5
 ### Configuration du Backend
 1. **Cloner et accéder au backend**
 ```bash
-cd jeb-backend
+cd sian-dacqui-backend
 ```
 
 2. **Configuration des variables d'environnement**
@@ -72,7 +72,7 @@ npm run dev
 ## 🚀 Utilisation
 
 ### Synchronisation des données
-Le backend synchronise automatiquement les données depuis l'API JEB :
+Le backend synchronise automatiquement les données depuis l'API Sian D'Acqui :
 - **Startups**: 32 projets d'entreprises
 - **News**: 15 actualités récentes  
 - **Events**: 10 événements à venir
@@ -104,7 +104,7 @@ Le backend synchronise automatiquement les données depuis l'API JEB :
 │   │   ├── services/   # Services API
 │   │   └── data/       # Types et utilitaires
 │   └── package.json
-├── jeb-backend/        # API NestJS
+├── sian-dacqui-backend/        # API NestJS
 │   ├── src/
 │   │   ├── modules/    # Modules métier
 │   │   └── main.ts     # Point d'entrée avec CORS
@@ -140,7 +140,7 @@ Le backend est configuré pour accepter les requêtes depuis :
 
 ## 📁 Données
 
-Les données affichées sont synchronisées en temps réel depuis l'API JEB officielle, remplaçant complètement les données de mock utilisées précédemment.
+Les données affichées sont synchronisées en temps réel depuis l'API Sian D'Acqui officielle, remplaçant complètement les données de mock utilisées précédemment.
 
 ## 🔐 Sécurité
 
@@ -151,4 +151,4 @@ Les données affichées sont synchronisées en temps réel depuis l'API JEB offi
 
 ---
 
-**Note**: Ce projet utilise des données réelles de l'API JEB. Assurez-vous d'avoir les credentials appropriés dans votre fichier `.env.production`.
+**Note**: Ce projet utilise des données réelles de l'API Sian D'Acqui. Assurez-vous d'avoir les credentials appropriés dans votre fichier `.env.production`.
