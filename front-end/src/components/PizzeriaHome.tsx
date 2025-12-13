@@ -75,7 +75,7 @@ export function PizzeriaHome({ onNavigate }: Props) {
           }}
         >
           <img 
-            src="/images/notre menu.jpg" 
+            src="/images/notremenu.jpg" 
             alt="Notre Menu" 
             className="absolute inset-0 w-full h-full object-cover"
           />
