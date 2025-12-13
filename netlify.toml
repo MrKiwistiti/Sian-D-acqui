@@ -1,5 +1,5 @@
 [build]
-  command = "cd front-end && npm run build"
+  command = "cd front-end && npm install && npm run build"
   publish = "front-end/dist"
 
 [context.production.environment]
