@@ -12,6 +12,7 @@ interface PizzaDetail {
   name: string;
   price: string;
   description: string;
+  histoire?: string;
   ingredients: Array<{
     name: string;
     image?: string;

@@ -84,7 +84,7 @@ export function MenuPage({ onNavigate }: MenuPageProps) {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {(activeCategory === 'pizzas' ? pizzas : menuData[activeCategory]).map((item) => {
               const isPizza = activeCategory === 'pizzas';
-              const pizza = isPizza ? item : null;
+              const pizza = isPizza && item ? item : null;
               
               return (
                 <div 
@@ -105,7 +105,7 @@ export function MenuPage({ onNavigate }: MenuPageProps) {
                     <div className="flex justify-between items-start mb-3">
                       <h3 className="text-lg font-bold text-gray-900">{item.name}</h3>
                       <span className="text-lg font-bold text-primary ml-2">
-                        {isPizza && 'price' in pizza ? `${pizza.price}€` : item.price}
+                        {isPizza && pizza && 'price' in pizza ? `${pizza.price}€` : item.price}
                       </span>
                     </div>
                     
