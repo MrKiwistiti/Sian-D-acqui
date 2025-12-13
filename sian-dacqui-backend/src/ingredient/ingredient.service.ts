@@ -48,7 +48,6 @@ export class IngredientService {
 
   async findAvailable(): Promise<Ingredient[]> {
     return this.ingredientRepository.find({
-      where: { available: true },
       order: { name: 'ASC' }
     });
   }
