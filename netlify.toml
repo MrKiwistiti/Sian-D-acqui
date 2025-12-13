@@ -3,7 +3,7 @@
   publish = "front-end/dist"
 
 [context.production.environment]
-  VITE_API_URL = "https://your-backend-url.com/api"
+  VITE_API_URL = "https://sian-d-acqui-production.up.railway.app/api"
   NODE_ENV = "production"
 
 [[redirects]]
