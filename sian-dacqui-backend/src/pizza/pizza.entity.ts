@@ -30,7 +30,7 @@ export class Pizza {
   @Column({ default: false })
   vegetarian: boolean;
 
-  @ManyToMany(() => Ingredient, ingredient => ingredient.pizzas, { eager: true })
+  @ManyToMany(() => Ingredient, ingredient => ingredient.pizzas)
   @JoinTable({
     name: 'pizza_ingredients',
     joinColumn: { name: 'pizza_id', referencedColumnName: 'id' },
