@@ -77,7 +77,8 @@ export function PizzeriaHome({ onNavigate }: Props) {
           <img 
             src="/images/notremenu.jpg" 
             alt="Notre Menu" 
-            className="absolute inset-0 w-full h-full object-cover"
+            className="absolute inset-0 w-full h-full object-cover object-center"
+            style={{ objectPosition: 'center center' }}
           />
           <div className="relative h-full flex flex-col items-center justify-center text-white p-4 md:p-8 transform group-hover:scale-105 transition-transform duration-500 bg-black/40" style={{ paddingRight: '45%' }}>
             <h2 className="text-3xl md:text-5xl font-bold mb-6 md:mb-8 font-heading animate-fade-in">Notre Menu</h2>
@@ -106,7 +107,8 @@ export function PizzeriaHome({ onNavigate }: Props) {
           <img 
             src="/images/commander.jpg" 
             alt="Commander" 
-            className="absolute inset-0 w-full h-full object-cover"
+            className="absolute inset-0 w-full h-full object-cover object-center"
+            style={{ objectPosition: 'center center' }}
           />
           <div className="relative h-full flex flex-col items-center justify-center text-white p-4 md:p-8 transform group-hover:scale-105 transition-transform duration-500" style={{ paddingLeft: '45%' }}>
             <h2 className="text-3xl md:text-5xl font-bold mb-6 md:mb-8 font-heading animate-fade-in">Commander</h2>
