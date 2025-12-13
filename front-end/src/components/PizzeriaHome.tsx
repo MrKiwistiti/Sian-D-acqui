@@ -68,13 +68,18 @@ export function PizzeriaHome({ onNavigate }: Props) {
       <div className="relative min-h-screen">
         {/* Left side - Menu */}
         <div 
-          className="absolute inset-0 bg-gradient-to-br from-red-600 to-red-700 clip-diagonal-left group hover:scale-105 transition-transform duration-700 cursor-pointer"
+          className="absolute inset-0 clip-diagonal-left group hover:scale-105 transition-transform duration-700 cursor-pointer overflow-hidden"
           onClick={() => onNavigate('menu')}
           style={{
             clipPath: 'polygon(0 0, 55% 0, 45% 100%, 0 100%)'
           }}
         >
-          <div className="h-full flex flex-col items-center justify-center text-white p-4 md:p-8 transform group-hover:scale-105 transition-transform duration-500" style={{ paddingRight: '45%' }}>
+          <img 
+            src="/images/notre menu.jpg" 
+            alt="Notre Menu" 
+            className="absolute inset-0 w-full h-full object-cover"
+          />
+          <div className="relative h-full flex flex-col items-center justify-center text-white p-4 md:p-8 transform group-hover:scale-105 transition-transform duration-500 bg-black/40" style={{ paddingRight: '45%' }}>
             <h2 className="text-3xl md:text-5xl font-bold mb-6 md:mb-8 font-heading animate-fade-in">Notre Menu</h2>
             <Button 
               size="lg" 
