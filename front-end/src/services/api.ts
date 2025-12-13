@@ -350,35 +350,88 @@ export function useNews() {
 // Pizzas API
 export const pizzasAPI = {
   async getAll(): Promise<Pizza[]> {
-    const response = await fetch(`${API_BASE_URL}/pizzas`);
-    if (!response.ok) {
-      throw new Error('Failed to fetch pizzas');
+    console.log(`🍕 Fetching pizzas from: ${API_BASE_URL}/pizzas`);
+    try {
+      const response = await fetch(`${API_BASE_URL}/pizzas`);
+      console.log(`📡 Response status: ${response.status} ${response.statusText}`);
+      console.log(`📋 Response headers:`, Object.fromEntries(response.headers.entries()));
+      
+      if (!response.ok) {
+        const errorText = await response.text();
+        console.error(`❌ Error response body:`, errorText);
+        throw new Error(`Failed to fetch pizzas: ${response.status} ${response.statusText} - ${errorText}`);
+      }
+      
+      const data = await response.json();
+      console.log(`✅ Successfully fetched ${data.length} pizzas`);
+      return data;
+    } catch (error) {
+      console.error(`💥 Fetch error:`, error);
+      throw error;
     }
-    return response.json();
   },
 
   async getAvailable(): Promise<Pizza[]> {
-    const response = await fetch(`${API_BASE_URL}/pizzas/available`);
-    if (!response.ok) {
-      throw new Error('Failed to fetch available pizzas');
+    console.log(`🍕 Fetching available pizzas from: ${API_BASE_URL}/pizzas/available`);
+    try {
+      const response = await fetch(`${API_BASE_URL}/pizzas/available`);
+      console.log(`📡 Response status: ${response.status} ${response.statusText}`);
+      
+      if (!response.ok) {
+        const errorText = await response.text();
+        console.error(`❌ Error response body:`, errorText);
+        throw new Error(`Failed to fetch available pizzas: ${response.status} ${response.statusText} - ${errorText}`);
+      }
+      
+      const data = await response.json();
+      console.log(`✅ Successfully fetched ${data.length} available pizzas`);
+      return data;
+    } catch (error) {
+      console.error(`💥 Fetch error:`, error);
+      throw error;
     }
-    return response.json();
   },
 
   async getVegetarian(): Promise<Pizza[]> {
-    const response = await fetch(`${API_BASE_URL}/pizzas/vegetarian`);
-    if (!response.ok) {
-      throw new Error('Failed to fetch vegetarian pizzas');
+    console.log(`🍕 Fetching vegetarian pizzas from: ${API_BASE_URL}/pizzas/vegetarian`);
+    try {
+      const response = await fetch(`${API_BASE_URL}/pizzas/vegetarian`);
+      console.log(`📡 Response status: ${response.status} ${response.statusText}`);
+      
+      if (!response.ok) {
+        const errorText = await response.text();
+        console.error(`❌ Error response body:`, errorText);
+        throw new Error(`Failed to fetch vegetarian pizzas: ${response.status} ${response.statusText} - ${errorText}`);
+      }
+      
+      const data = await response.json();
+      console.log(`✅ Successfully fetched ${data.length} vegetarian pizzas`);
+      return data;
+    } catch (error) {
+      console.error(`💥 Fetch error:`, error);
+      throw error;
     }
-    return response.json();
   },
 
   async getById(id: number): Promise<Pizza> {
-    const response = await fetch(`${API_BASE_URL}/pizzas/${id}`);
-    if (!response.ok) {
-      throw new Error('Failed to fetch pizza');
+    console.log(`🍕 Fetching pizza #${id} from: ${API_BASE_URL}/pizzas/${id}`);
+    try {
+      const response = await fetch(`${API_BASE_URL}/pizzas/${id}`);
+      console.log(`📡 Response status: ${response.status} ${response.statusText}`);
+      
+      if (!response.ok) {
+        const errorText = await response.text();
+        console.error(`❌ Error response body:`, errorText);
+        throw new Error(`Failed to fetch pizza: ${response.status} ${response.statusText} - ${errorText}`);
+      }
+      
+      const data = await response.json();
+      console.log(`✅ Successfully fetched pizza:`, data.name);
+      return data;
+    } catch (error) {
+      console.error(`💥 Fetch error:`, error);
+      throw error;
     }
-    return response.json();
   },
 };
 
@@ -390,15 +443,23 @@ export function usePizzas(vegetarianOnly: boolean = false) {
   useEffect(() => {
     async function fetchPizzas() {
       try {
+        console.log(`🔄 usePizzas: Starting fetch (vegetarianOnly=${vegetarianOnly})`);
         setLoading(true);
+        setError(null);
+        
         const data = vegetarianOnly 
           ? await pizzasAPI.getVegetarian()
           : await pizzasAPI.getAvailable();
+        
+        console.log(`🔄 usePizzas: Setting ${data.length} pizzas in state`);
         setPizzas(data);
       } catch (err) {
-        setError(err instanceof Error ? err.message : 'Unknown error');
+        const errorMessage = err instanceof Error ? err.message : 'Unknown error';
+        console.error(`🔄 usePizzas: Error caught:`, errorMessage, err);
+        setError(errorMessage);
       } finally {
         setLoading(false);
+        console.log(`🔄 usePizzas: Fetch complete`);
       }
     }
 
