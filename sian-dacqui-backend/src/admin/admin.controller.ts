@@ -174,7 +174,7 @@ SELECT setval('ingredients_id_seq', (SELECT MAX(id) FROM ingredients));
     try {
       await this.dataSource.query(`
         UPDATE pizzas SET "imageUrl" = '/images/pizzas/calzone.jpg' WHERE name = 'La Calzone';
-        UPDATE pizzas SET "imageUrl" = '/images/pizzas/reine.jpg' WHERE name = 'La Regina';
+        UPDATE pizzas SET "imageUrl" = '/images/pizzas/regina.jpg' WHERE name = 'La Regina';
       `);
       
       return {
