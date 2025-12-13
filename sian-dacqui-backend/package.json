@@ -21,6 +21,7 @@
     "typeorm": "typeorm-ts-node-commonjs",
     "migration:generate": "npm run typeorm -- migration:generate src/migrations/InitSchema -d src/typeorm-data-source.ts",
     "migration:run": "npm run typeorm -- migration:run -d src/typeorm-data-source.ts",
+    "migration:run:prod": "node -r module-alias/register ./node_modules/typeorm/cli.js migration:run -d dist/src/typeorm-data-source.js",
     "migration:revert": "npm run typeorm -- migration:revert -d src/typeorm-data-source.ts",
     "seed:pizzeria": "ts-node seed-pizzeria.ts"
   },

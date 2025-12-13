@@ -1,4 +1,4 @@
 {
   "build": "npm install && npm run build",
-  "start": "npm run migration:run && node dist/src/main.js"
+  "start": "npm run migration:run:prod && node dist/src/main.js"
 }
