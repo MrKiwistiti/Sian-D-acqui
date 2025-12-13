@@ -1,5 +1,5 @@
 [build]
-  command = "cd front-end && npm ci && npx tsc -b && npx vite build"
+  command = "cd front-end && npm ci && npx vite build"
   publish = "front-end/dist"
 
 [context.production.environment]
