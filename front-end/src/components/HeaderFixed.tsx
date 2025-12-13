@@ -36,7 +36,7 @@ export function HeaderFixed({ currentPage, onNavigate }: HeaderProps) {
     <>
       {/* site banner - real restaurant banner */}
       <div className="site-banner" role="img" aria-label="Bannière Pizzeria Sian D'Acqui">
-        <img src="/images/banneracqui.PNG" alt="Pizzeria Sian D'Acqui - bannière" />
+        <img src="/images/banneracqui.png" alt="Pizzeria Sian D'Acqui - bannière" />
       </div>
 
       <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60" role="banner">

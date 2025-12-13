@@ -84,7 +84,10 @@ dist
 
 # Gatsby files
 .cache/
-public
+# public  # Commented out - we need front-end/public for Vite assets
+
+# Allow front-end/public (Vite uses this for static assets)
+!front-end/public/
 
 # Vite build output
 */dist/
