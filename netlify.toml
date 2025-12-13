@@ -1,5 +1,5 @@
 [build]
-  command = "cd front-end && rm -rf node_modules package-lock.json && npm install && npm run build"
+  command = "cd front-end && npm install && npm run build"
   publish = "front-end/dist"
 
 [context.production.environment]
