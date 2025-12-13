@@ -168,4 +168,24 @@ SELECT setval('ingredients_id_seq', (SELECT MAX(id) FROM ingredients));
       };
     }
   }
+
+  @Post('update-pizza-images')
+  async updatePizzaImages() {
+    try {
+      await this.dataSource.query(`
+        UPDATE pizzas SET "imageUrl" = '/images/pizzas/calzone.jpg' WHERE name = 'La Calzone';
+        UPDATE pizzas SET "imageUrl" = '/images/pizzas/reine.jpg' WHERE name = 'La Regina';
+      `);
+      
+      return {
+        success: true,
+        message: 'Pizza images updated successfully',
+      };
+    } catch (error) {
+      return {
+        success: false,
+        message: error.message,
+      };
+    }
+  }
 }
