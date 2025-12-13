@@ -1,1 +1,1 @@
-web: cd sian-dacqui-backend && npm run build && npm run start:prod
+web: cd sian-dacqui-backend && npm install && npx nest build && npm run start:prod
