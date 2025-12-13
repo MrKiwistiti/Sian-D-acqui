@@ -9,17 +9,8 @@ export class Ingredient {
   @Column({ unique: true })
   name: string;
 
-  @Column({ type: 'text', nullable: true })
-  description: string;
-
-  @Column({ type: 'decimal', precision: 10, scale: 2, default: 0 })
-  price: number;
-
-  @Column({ default: true })
-  available: boolean;
-
-  @Column({ nullable: true })
-  imageUrl: string;
+  @Column({ default: false })
+  allergen: boolean;
 
   @ManyToMany(() => Pizza, pizza => pizza.ingredients)
   pizzas: Pizza[];
