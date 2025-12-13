@@ -14,6 +14,7 @@ import { HealthController } from './health/health.controller';
 import { AuthModule } from './auth/auth.module';
 import { PizzaModule } from './pizza/pizza.module';
 import { IngredientModule } from './ingredient/ingredient.module';
+import { AdminModule } from './admin/admin.module';
 
 
 @Module({
@@ -69,6 +70,7 @@ import { IngredientModule } from './ingredient/ingredient.module';
     AuthModule,
     PizzaModule,
     IngredientModule,
+    AdminModule,
   ],
   controllers: [HealthController],
   providers: [],
