@@ -1,4 +1,4 @@
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000/api';
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3001/api';
 
 export interface Startup {
   id: number;
@@ -52,6 +52,30 @@ export interface Event {
   image_url?: string;
   created_at?: string;
   updated_at?: string;
+}
+
+export interface Ingredient {
+  id: number;
+  name: string;
+  price: number;
+  available: boolean;
+  createdAt: string;
+  updatedAt: string;
+}
+
+export interface Pizza {
+  id: number;
+  name: string;
+  description?: string;
+  price: number;
+  size: string;
+  available: boolean;
+  vegetarian: boolean;
+  imageUrl?: string;
+  preparationTime: number;
+  ingredients: Ingredient[];
+  createdAt: string;
+  updatedAt: string;
 }
 
 // Startups API
@@ -321,6 +345,67 @@ export function useNews() {
   }, []);
 
   return { news, loading, error };
+}
+
+// Pizzas API
+export const pizzasAPI = {
+  async getAll(): Promise<Pizza[]> {
+    const response = await fetch(`${API_BASE_URL}/pizzas`);
+    if (!response.ok) {
+      throw new Error('Failed to fetch pizzas');
+    }
+    return response.json();
+  },
+
+  async getAvailable(): Promise<Pizza[]> {
+    const response = await fetch(`${API_BASE_URL}/pizzas/available`);
+    if (!response.ok) {
+      throw new Error('Failed to fetch available pizzas');
+    }
+    return response.json();
+  },
+
+  async getVegetarian(): Promise<Pizza[]> {
+    const response = await fetch(`${API_BASE_URL}/pizzas/vegetarian`);
+    if (!response.ok) {
+      throw new Error('Failed to fetch vegetarian pizzas');
+    }
+    return response.json();
+  },
+
+  async getById(id: number): Promise<Pizza> {
+    const response = await fetch(`${API_BASE_URL}/pizzas/${id}`);
+    if (!response.ok) {
+      throw new Error('Failed to fetch pizza');
+    }
+    return response.json();
+  },
+};
+
+export function usePizzas(vegetarianOnly: boolean = false) {
+  const [pizzas, setPizzas] = useState<Pizza[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    async function fetchPizzas() {
+      try {
+        setLoading(true);
+        const data = vegetarianOnly 
+          ? await pizzasAPI.getVegetarian()
+          : await pizzasAPI.getAvailable();
+        setPizzas(data);
+      } catch (err) {
+        setError(err instanceof Error ? err.message : 'Unknown error');
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    fetchPizzas();
+  }, [vegetarianOnly]);
+
+  return { pizzas, loading, error };
 }
 
 export function useEvents() {

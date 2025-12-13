@@ -29,8 +29,8 @@ type AuthContextType = {
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
-// Base URL de ton API (vite: VITE_API_URL) – ex: http://localhost:3000
-const API_BASE = (import.meta as any)?.env?.VITE_API_URL ?? 'http://localhost:3000';
+// Base URL de ton API (vite: VITE_API_URL) – ex: http://localhost:3001
+const API_BASE = (import.meta as any)?.env?.VITE_API_URL ?? 'http://localhost:3001';
 
 export function useAuth(): AuthContextType {
   const ctx = useContext(AuthContext);

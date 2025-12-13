@@ -30,6 +30,10 @@ export class CreatePizzaDto {
   @Min(0)
   preparationTime?: number;
 
+  @IsBoolean()
+  @IsOptional()
+  vegetarian?: boolean;
+
   @IsArray()
   @IsNumber({}, { each: true })
   @IsOptional()

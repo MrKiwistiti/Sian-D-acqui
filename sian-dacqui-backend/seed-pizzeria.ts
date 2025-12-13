@@ -65,6 +65,7 @@ async function seedDatabase() {
         price: 11.50,
         size: 'medium',
         preparationTime: 12,
+        vegetarian: true,
         ingredients: ['Sauce Tomate', 'Mozzarella', 'Basilic'],
       },
       {
@@ -73,6 +74,7 @@ async function seedDatabase() {
         price: 13.50,
         size: 'medium',
         preparationTime: 15,
+        vegetarian: false,
         ingredients: ['Sauce Tomate', 'Mozzarella', 'Jambon', 'Champignons'],
       },
       {
@@ -81,6 +83,7 @@ async function seedDatabase() {
         price: 12.50,
         size: 'medium',
         preparationTime: 13,
+        vegetarian: false,
         ingredients: ['Sauce Tomate', 'Mozzarella', 'Anchois', 'Olives'],
       },
       {
@@ -89,6 +92,7 @@ async function seedDatabase() {
         price: 14.50,
         size: 'medium',
         preparationTime: 14,
+        vegetarian: true,
         ingredients: ['Mozzarella', 'Gorgonzola', 'Parmesan', 'Chèvre'],
       },
       {
@@ -97,6 +101,7 @@ async function seedDatabase() {
         price: 13.00,
         size: 'medium',
         preparationTime: 15,
+        vegetarian: true,
         ingredients: ['Sauce Tomate', 'Mozzarella', 'Poivrons', 'Champignons', 'Olives', 'Oignons'],
       },
       {
@@ -105,6 +110,7 @@ async function seedDatabase() {
         price: 14.00,
         size: 'medium',
         preparationTime: 13,
+        vegetarian: false,
         ingredients: ['Sauce Tomate', 'Mozzarella', 'Pepperoni', 'Oignons'],
       },
       {
@@ -113,6 +119,7 @@ async function seedDatabase() {
         price: 14.50,
         size: 'medium',
         preparationTime: 16,
+        vegetarian: false,
         ingredients: ['Sauce Tomate', 'Mozzarella', 'Jambon', 'Champignons', 'Oignons', 'Poivrons'],
       },
       {
@@ -121,6 +128,7 @@ async function seedDatabase() {
         price: 15.00,
         size: 'medium',
         preparationTime: 14,
+        vegetarian: true,
         ingredients: ['Sauce Tomate', 'Mozzarella', 'Roquette', 'Parmesan'],
       },
     ];
@@ -129,11 +137,11 @@ async function seedDatabase() {
     for (const pizza of pizzas) {
       // Insérer la pizza
       const result = await AppDataSource.query(
-        `INSERT INTO pizzas (name, description, price, size, "preparationTime", available, "createdAt", "updatedAt") 
-         VALUES ($1, $2, $3, $4, $5, $6, NOW(), NOW()) 
+        `INSERT INTO pizzas (name, description, price, size, "preparationTime", vegetarian, available, "createdAt", "updatedAt") 
+         VALUES ($1, $2, $3, $4, $5, $6, $7, NOW(), NOW()) 
          ON CONFLICT (name) DO NOTHING
          RETURNING id`,
-        [pizza.name, pizza.description, pizza.price, pizza.size, pizza.preparationTime, true]
+        [pizza.name, pizza.description, pizza.price, pizza.size, pizza.preparationTime, pizza.vegetarian, true]
       );
 
       if (result.length > 0) {

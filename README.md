@@ -15,7 +15,7 @@ Application complète avec frontend React et backend NestJS pour afficher les do
 - **Base de données**: PostgreSQL 16 (Docker)
 - **Port**: http://localhost:3000
 - **API externe**: Synchronisation avec Sian D'Acqui API
-
+lance 
 ## 📦 Installation
 
 ### Prérequis

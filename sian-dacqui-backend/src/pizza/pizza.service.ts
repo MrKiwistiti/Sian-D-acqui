@@ -32,7 +32,7 @@ export class PizzaService {
   async findAll(): Promise<Pizza[]> {
     return this.pizzaRepository.find({
       relations: ['ingredients'],
-      order: { name: 'ASC' }
+      order: { id: 'ASC' }
     });
   }
 
@@ -77,7 +77,7 @@ export class PizzaService {
     return this.pizzaRepository.find({
       where: { available: true },
       relations: ['ingredients'],
-      order: { name: 'ASC' }
+      order: { id: 'ASC' }
     });
   }
 
@@ -103,5 +103,13 @@ export class PizzaService {
     const pizza = await this.findOne(pizzaId);
     pizza.ingredients = pizza.ingredients.filter(ing => ing.id !== ingredientId);
     return this.pizzaRepository.save(pizza);
+  }
+
+  async findVegetarian(): Promise<Pizza[]> {
+    return this.pizzaRepository.find({
+      where: { vegetarian: true, available: true },
+      relations: ['ingredients'],
+      order: { id: 'ASC' }
+    });
   }
 }

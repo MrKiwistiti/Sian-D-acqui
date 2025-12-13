@@ -27,6 +27,9 @@ export class Pizza {
   @Column({ default: 0 })
   preparationTime: number; // en minutes
 
+  @Column({ default: false })
+  vegetarian: boolean;
+
   @ManyToMany(() => Ingredient, ingredient => ingredient.pizzas, { eager: true })
   @JoinTable({
     name: 'pizza_ingredients',

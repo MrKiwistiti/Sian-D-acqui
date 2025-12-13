@@ -12,7 +12,6 @@ interface PizzaDetail {
   name: string;
   price: string;
   description: string;
-  histoire: string;
   ingredients: Array<{
     name: string;
     image?: string;
@@ -343,12 +342,6 @@ export function PizzaDetailPage({ pizzaId, onNavigate }: PizzaDetailPageProps) {
               <AllergenList allergens={pizzaAllergens} size="md" layout="horizontal" />
             </div>
           )}
-
-          {/* Histoire */}
-          <div className="bg-white rounded-lg shadow-md p-6 mb-6">
-            <h2 className="text-2xl font-bold mb-3 text-gray-900">Histoire</h2>
-            <p className="text-gray-700 text-lg leading-relaxed">{pizza.histoire}</p>
-          </div>
 
           {/* Ingrédients */}
           <div className="bg-white rounded-lg shadow-md p-6">

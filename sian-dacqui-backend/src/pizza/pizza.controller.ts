@@ -23,6 +23,11 @@ export class PizzaController {
     return this.pizzaService.findAvailable();
   }
 
+  @Get('vegetarian')
+  findVegetarian() {
+    return this.pizzaService.findVegetarian();
+  }
+
   @Get(':id')
   findOne(@Param('id') id: string) {
     return this.pizzaService.findOne(+id);

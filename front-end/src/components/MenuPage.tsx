@@ -1,9 +1,8 @@
 import { useState } from "react";
 import { Button } from "./ui/button";
-import { AllergenFilter } from "./AllergenFilter";
-import { AllergenList } from "./AllergenBadge";
-import type { AllergenType } from "../types/allergens";
-import { getPizzaAllergens } from "../types/allergens";
+import { VegetarianFilter } from "./VegetarianFilter";
+import { usePizzas } from "../services/api";
+import { Leaf } from "lucide-react";
 
 interface MenuPageProps {
   onNavigate: (page: string, id?: string) => void;
@@ -11,28 +10,10 @@ interface MenuPageProps {
 
 export function MenuPage({ onNavigate }: MenuPageProps) {
   const [activeCategory, setActiveCategory] = useState<'pizzas' | 'desserts' | 'boissons'>('pizzas');
-  const [selectedAllergens, setSelectedAllergens] = useState<AllergenType[]>([]);
-  const [filterMode, setFilterMode] = useState<'exclude' | 'only'>('exclude');
+  const [isVegetarianOnly, setIsVegetarianOnly] = useState(false);
+  const { pizzas, loading, error } = usePizzas(isVegetarianOnly);
 
   const menuData = {
-    pizzas: [
-      { id: "1", name: "La Marguerite", price: "10.00€" },
-      { id: "2", name: "La Regina", price: "13.00€" },
-      { id: "3", name: "La Napo", price: "14.00€" },
-      { id: "4", name: "La Caprese", price: "14.00€" },
-      { id: "5", name: "La 4 Saisons", price: "14.00€" },
-      { id: "6", name: "La Chevre Miel", price: "14.00€" },
-      { id: "7", name: "La Calabrese", price: "15.00€" },
-      { id: "8", name: "La Calzone", price: "14.00€" },
-      { id: "9", name: "La 4 Fromages", price: "14.00€" },
-      { id: "10", name: "La Merguez", price: "14.00€" },
-      { id: "11", name: "La Cannibale", price: "15.00€" },
-      { id: "12", name: "La Lily-Rose", price: "15.00€" },
-      { id: "13", name: "La Emmy-Lou", price: "15.00€" },
-      { id: "14", name: "La Chris", price: "15.00€" },
-      { id: "15", name: "La Ludmilove", price: "15.00€" },
-      { id: "16", name: "La Truffe", price: "20.00€" }
-    ],
     desserts: [
       { id: "d1", name: "Pizza Nutella", price: "7.00€" }
     ],
@@ -49,29 +30,6 @@ export function MenuPage({ onNavigate }: MenuPageProps) {
     { id: 'desserts' as const, label: 'Desserts' },
     { id: 'boissons' as const, label: 'Boissons' }
   ];
-
-  const handleAllergenChange = (allergen: AllergenType, isSelected: boolean) => {
-    if (isSelected) {
-      setSelectedAllergens([...selectedAllergens, allergen]);
-    } else {
-      setSelectedAllergens(selectedAllergens.filter(a => a !== allergen));
-    }
-  };
-
-  // Filtrer les pizzas selon les allergènes
-  const filteredPizzas = menuData.pizzas.filter(pizza => {
-    if (selectedAllergens.length === 0) return true;
-    
-    const pizzaAllergens = getPizzaAllergens(pizza.id);
-    
-    if (filterMode === 'exclude') {
-      // Masquer les pizzas qui contiennent l'un des allergènes sélectionnés
-      return !selectedAllergens.some(allergen => pizzaAllergens.includes(allergen));
-    } else {
-      // Afficher uniquement les pizzas qui contiennent TOUS les allergènes sélectionnés
-      return selectedAllergens.every(allergen => pizzaAllergens.includes(allergen));
-    }
-  });
 
   return (
     <div className="min-h-screen" style={{ backgroundColor: '#FFF8F0' }}>
@@ -99,63 +57,100 @@ export function MenuPage({ onNavigate }: MenuPageProps) {
         </div>
       </div>
       <div className="container mx-auto px-4 py-8">
-        {/* Filtre allergènes - visible uniquement pour pizzas */}
+        {/* Filtre végétarien - visible uniquement pour pizzas */}
         {activeCategory === 'pizzas' && (
-          <AllergenFilter
-            selectedAllergens={selectedAllergens}
-            onAllergenChange={handleAllergenChange}
-            filterMode={filterMode}
-            onFilterModeChange={setFilterMode}
+          <VegetarianFilter
+            isVegetarianOnly={isVegetarianOnly}
+            onToggle={setIsVegetarianOnly}
           />
         )}
 
-        {/* Affichage des pizzas filtrées ou toutes les items */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {(activeCategory === 'pizzas' ? filteredPizzas : menuData[activeCategory]).map((item) => {
-            const pizzaAllergens = activeCategory === 'pizzas' ? getPizzaAllergens(item.id) : [];
-            return (
-              <div 
-                key={item.id} 
-                className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-all duration-300 cursor-pointer"
-                onClick={() => {
-                  if (activeCategory === 'pizzas') {
-                    onNavigate('pizza-detail', item.id);
-                  }
-                }}
-              >
-                <div className="relative h-48 bg-gradient-to-br from-gray-50 to-gray-100"></div>
-                <div className="p-4">
-                  <div className="flex justify-between items-start mb-3">
-                    <h3 className="text-lg font-bold text-gray-900">{item.name}</h3>
-                    <span className="text-lg font-bold text-primary ml-2">{item.price}</span>
-                  </div>
-                  
-                  {/* Affichage des allergènes pour les pizzas */}
-                  {activeCategory === 'pizzas' && pizzaAllergens.length > 0 && (
-                    <div className="mt-3 pt-3 border-t">
-                      <p className="text-xs font-semibold text-gray-600 mb-2">Allergènes:</p>
-                      <AllergenList allergens={pizzaAllergens} size="sm" layout="horizontal" />
-                    </div>
-                  )}
-                </div>
-              </div>
-            );
-          })}
-        </div>
-
-        {/* Message si aucune pizza ne correspond */}
-        {activeCategory === 'pizzas' && filteredPizzas.length === 0 && (
+        {/* État de chargement */}
+        {activeCategory === 'pizzas' && loading && (
           <div className="text-center py-12">
-            <p className="text-lg text-gray-600 mb-4">Aucune pizza ne correspond à vos critères d'allergènes.</p>
-            <button
-              onClick={() => {
-                setSelectedAllergens([]);
-                setFilterMode('exclude');
-              }}
-              className="text-blue-600 hover:text-blue-800 font-semibold"
-            >
-              Réinitialiser les filtres
-            </button>
+            <p className="text-lg text-gray-600">Chargement des pizzas...</p>
+          </div>
+        )}
+
+        {/* Message d'erreur */}
+        {activeCategory === 'pizzas' && error && (
+          <div className="text-center py-12">
+            <p className="text-lg text-red-600 mb-4">Erreur: {error}</p>
+          </div>
+        )}
+
+        {/* Affichage des items */}
+        {!loading && !error && (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {(activeCategory === 'pizzas' ? pizzas : menuData[activeCategory]).map((item) => {
+              const isPizza = activeCategory === 'pizzas';
+              const pizza = isPizza ? item : null;
+              
+              return (
+                <div 
+                  key={item.id} 
+                  className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-all duration-300 cursor-pointer"
+                  onClick={() => {
+                    if (isPizza) {
+                      onNavigate('pizza-detail', String(item.id));
+                    }
+                  }}
+                >
+                  <div className="relative h-48 bg-gradient-to-br from-gray-50 to-gray-100">
+                    {isPizza && pizza && 'imageUrl' in pizza && pizza.imageUrl && (
+                      <img src={pizza.imageUrl} alt={item.name} className="w-full h-full object-cover" />
+                    )}
+                  </div>
+                  <div className="p-4">
+                    <div className="flex justify-between items-start mb-3">
+                      <h3 className="text-lg font-bold text-gray-900">{item.name}</h3>
+                      <span className="text-lg font-bold text-primary ml-2">
+                        {isPizza && 'price' in pizza ? `${pizza.price}€` : item.price}
+                      </span>
+                    </div>
+                    
+                    {/* Description de la pizza */}
+                    {isPizza && pizza && 'description' in pizza && pizza.description && (
+                      <p className="text-sm text-gray-600 mb-3">{pizza.description}</p>
+                    )}
+                    
+                    {/* Badge végétarien */}
+                    {isPizza && pizza && 'vegetarian' in pizza && pizza.vegetarian && (
+                      <div className="flex items-center gap-2 mt-3 pt-3 border-t">
+                        <Leaf className="w-4 h-4 text-green-600" />
+                        <span className="text-sm font-semibold text-green-600">Végétarien</span>
+                      </div>
+                    )}
+                    
+                    {/* Temps de préparation */}
+                    {isPizza && pizza && 'preparationTime' in pizza && pizza.preparationTime > 0 && (
+                      <div className="text-xs text-gray-500 mt-2">
+                        Préparation: {pizza.preparationTime} min
+                      </div>
+                    )}
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        )}
+
+        {/* Message si aucune pizza disponible */}
+        {activeCategory === 'pizzas' && !loading && !error && pizzas.length === 0 && (
+          <div className="text-center py-12">
+            <p className="text-lg text-gray-600 mb-4">
+              {isVegetarianOnly 
+                ? "Aucune pizza végétarienne disponible pour le moment."
+                : "Aucune pizza disponible pour le moment."}
+            </p>
+            {isVegetarianOnly && (
+              <button
+                onClick={() => setIsVegetarianOnly(false)}
+                className="text-blue-600 hover:text-blue-800 font-semibold"
+              >
+                Voir toutes les pizzas
+              </button>
+            )}
           </div>
         )}
       </div>

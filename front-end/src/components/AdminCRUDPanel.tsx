@@ -74,7 +74,7 @@ export function AdminCRUDPanel({ onNavigate }: AdminCRUDPanelProps) {
                         onValueChange={async (newRole) => {
                           try {
                             // Appel direct à l'API pour mettre à jour le rôle
-                            const response = await fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:3000'}/api/users/${user.id}`, {
+                            const response = await fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:3001'}/api/users/${user.id}`, {
                               method: 'PATCH',
                               headers: {
                                 'Content-Type': 'application/json',
