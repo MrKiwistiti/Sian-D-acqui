@@ -75,14 +75,11 @@ export function PizzeriaHome({ onNavigate }: Props) {
           }}
         >
           <div className="h-full flex flex-col items-center justify-center text-white p-4 md:p-8 transform group-hover:scale-105 transition-transform duration-500" style={{ paddingRight: '45%' }}>
-            <h2 className="text-2xl md:text-5xl font-bold mb-2 md:mb-4 font-heading animate-fade-in">Notre Menu</h2>
-            <p className="text-sm md:text-xl mb-4 md:mb-8 opacity-90 text-center max-w-md animate-fade-in-delayed px-2 md:px-4 leading-relaxed">
-              Découvrez nos pizzas artisanales au feu de bois
-            </p>
+            <h2 className="text-3xl md:text-5xl font-bold mb-6 md:mb-8 font-heading animate-fade-in">Notre Menu</h2>
             <Button 
               size="lg" 
               variant="outline" 
-              className="bg-white text-red-600 hover:bg-red-50 border-white hover:border-red-100 font-bold text-sm md:text-lg px-4 py-3 md:px-8 md:py-6 animate-fade-in-delayed-2"
+              className="bg-white text-red-600 hover:bg-red-50 border-white hover:border-red-100 font-bold text-base md:text-lg px-6 py-4 md:px-8 md:py-6 animate-fade-in-delayed-2"
               onClick={(e) => {
                 e.stopPropagation();
                 onNavigate('menu');
@@ -107,13 +104,10 @@ export function PizzeriaHome({ onNavigate }: Props) {
             className="absolute inset-0 w-full h-full object-cover"
           />
           <div className="relative h-full flex flex-col items-center justify-center text-white p-4 md:p-8 transform group-hover:scale-105 transition-transform duration-500" style={{ paddingLeft: '45%' }}>
-            <h2 className="text-2xl md:text-5xl font-bold mb-2 md:mb-4 font-heading animate-fade-in">Commander</h2>
-            <p className="text-sm md:text-xl mb-4 md:mb-8 opacity-90 text-center max-w-md animate-fade-in-delayed px-2 md:px-4 leading-relaxed">
-              Passez votre commande en ligne ou par téléphone
-            </p>
+            <h2 className="text-3xl md:text-5xl font-bold mb-6 md:mb-8 font-heading animate-fade-in">Commander</h2>
             <Button 
               size="lg" 
-              className="bg-red-600 hover:bg-red-700 text-white font-bold text-sm md:text-lg px-4 py-3 md:px-8 md:py-6 animate-fade-in-delayed-2"
+              className="bg-red-600 hover:bg-red-700 text-white font-bold text-base md:text-lg px-6 py-4 md:px-8 md:py-6 animate-fade-in-delayed-2"
               onClick={(e) => {
                 e.stopPropagation();
                 onNavigate('contact');
