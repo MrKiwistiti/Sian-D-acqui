@@ -8,7 +8,7 @@ async function bootstrap() {
   const isDevelopment = process.env.NODE_ENV !== 'production';
   const allowedOrigins = isDevelopment 
     ? ['http://localhost:5173', 'http://localhost:5174', 'http://localhost:5175', 'http://localhost:3000', 'http://localhost:3001']
-    : [process.env.FRONTEND_URL || 'https://inspiring-florentine-3dde71.netlify.app'];
+    : [process.env.FRONTEND_URL || 'https://sciandacqui.netlify.app'];
   
   app.enableCors({
     origin: allowedOrigins,
