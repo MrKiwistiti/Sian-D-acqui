@@ -1,0 +1,7 @@
+<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+  <path d="M 30 70 Q 35 40 40 20 Q 45 35 50 20 Q 55 40 60 20 Q 65 40 70 70 Z" fill="#2D5016"/>
+  <path d="M 32 70 Q 37 42 42 25 Q 47 40 52 25 Q 57 42 62 25 Q 67 42 72 70 Z" fill="#4A7C2C"/>
+  <ellipse cx="35" cy="65" rx="4" ry="3" fill="#1B2F0A"/>
+  <ellipse cx="65" cy="68" rx="4" ry="3" fill="#1B2F0A"/>
+  <ellipse cx="50" cy="70" rx="5" ry="4" fill="#1B2F0A"/>
+</svg>

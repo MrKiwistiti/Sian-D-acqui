@@ -1,0 +1,13 @@
+<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="arachideGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#D2B48C;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#A0826D;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <circle cx="50" cy="50" r="45" fill="url(#arachideGrad)"/>
+  <ellipse cx="35" cy="45" rx="12" ry="18" fill="#E8C9A0" stroke="#8B6914" stroke-width="1.5" opacity="0.9"/>
+  <ellipse cx="50" cy="40" rx="12" ry="18" fill="#E8C9A0" stroke="#8B6914" stroke-width="1.5" opacity="0.9"/>
+  <ellipse cx="65" cy="50" rx="12" ry="18" fill="#E8C9A0" stroke="#8B6914" stroke-width="1.5" opacity="0.9"/>
+  <path d="M 35 60 Q 50 70 65 60" stroke="#8B6914" stroke-width="1.5" fill="none"/>
+</svg>

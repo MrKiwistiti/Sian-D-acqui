@@ -1,0 +1,16 @@
+<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="truffleDarkGrad" cx="30%" cy="30%">
+      <stop offset="0%" style="stop-color:#333333;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1a1a1a;stop-opacity:1" />
+    </radialGradient>
+  </defs>
+  <circle cx="35" cy="40" r="18" fill="url(#truffleDarkGrad)"/>
+  <circle cx="35" cy="40" r="18" fill="#2a1810" opacity="0.6"/>
+  <ellipse cx="32" cy="36" rx="6" ry="8" fill="#4a3820" opacity="0.5"/>
+  <circle cx="65" cy="55" r="14" fill="url(#truffleDarkGrad)"/>
+  <circle cx="65" cy="55" r="14" fill="#2a1810" opacity="0.6"/>
+  <ellipse cx="63" cy="52" rx="4" ry="5" fill="#4a3820" opacity="0.5"/>
+  <circle cx="50" cy="70" r="11" fill="url(#truffleDarkGrad)"/>
+  <circle cx="50" cy="70" r="11" fill="#2a1810" opacity="0.6"/>
+</svg>
