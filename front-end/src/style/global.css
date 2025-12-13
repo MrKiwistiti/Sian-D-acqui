@@ -513,3 +513,47 @@ header nav [role="button"][aria-current="page"] {
 .with-banner header.sticky {
   margin-top: -0.5rem;
 }
+
+/* Mobile spacing improvements - prevent text from touching */
+@media screen and (max-width: 768px) {
+  /* Increase padding for main content on mobile */
+  .container {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+  
+  /* Add more spacing between sections */
+  section, .section {
+    margin-bottom: 2.5rem;
+  }
+  
+  /* Increase spacing in cards */
+  .menu-card-content {
+    padding: 1.5rem !important;
+  }
+  
+  /* Add more line height for better readability */
+  p, .text-sm, .text-base {
+    line-height: 1.7;
+    margin-bottom: 1rem;
+  }
+  
+  /* Headers spacing */
+  h1, h2, h3, h4 {
+    margin-bottom: 1.25rem;
+    margin-top: 1.5rem;
+  }
+  
+  h1 { margin-top: 2rem; }
+  h2 { margin-top: 1.75rem; }
+  
+  /* Button spacing */
+  button, .button {
+    margin: 0.5rem 0;
+  }
+  
+  /* Grid spacing */
+  .grid {
+    gap: 1.5rem !important;
+  }
+}
